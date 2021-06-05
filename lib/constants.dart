@@ -8,6 +8,10 @@ const KNumberTextStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
 );
+const KLargeButtonTextStyle = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+);
 
 // Colors
 const KBottomContainerHeight = 80.0;

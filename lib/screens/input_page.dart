@@ -1,9 +1,11 @@
+import 'package:bim_calculator_2/screens/results_page.dart';
 import 'package:bim_calculator_2/widgets/reusable_card.dart';
 import 'package:bim_calculator_2/widgets/reusable_icon.dart';
+import 'package:bim_calculator_2/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 enum Gender {
   male,
@@ -20,6 +22,8 @@ class _InputPageState extends State<InputPage> {
   //Color femaleCardColor = inactiveCardColor;
   Gender _selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 18;
 /*
   void updateColor(Gender selectedGender) {
     if (selectedGender == Gender.male) {
@@ -143,14 +147,96 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                Expanded(child: ReusableCard(color: KActiveCardColor)),
-                Expanded(child: ReusableCard(color: KActiveCardColor)),
+                Expanded(
+                  child: ReusableCard(
+                    color: KActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('WEIGHT', style: KLabelTextStyle),
+                        Text(weight.toString(), style: KNumberTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onClicked: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 10.0),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onClicked: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                }),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    color: KActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('AGE', style: KLabelTextStyle),
+                        Text(age.toString(), style: KNumberTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onClicked: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 10.0),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onClicked: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-          Container(
-            height: KBottomContainerHeight,
-            color: KBottomContainerColor,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Center(
+                child: Text(
+                  'Calculate',
+                  style: KLargeButtonTextStyle,
+                ),
+              ),
+              height: KBottomContainerHeight,
+              color: KBottomContainerColor,
+            ),
           ),
         ],
       ),
