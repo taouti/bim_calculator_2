@@ -12,7 +12,22 @@ const KLargeButtonTextStyle = TextStyle(
   fontSize: 30,
   fontWeight: FontWeight.bold,
 );
-
+const KResultPageTitleTextStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.bold,
+);
+const KResultTextStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+);
+const KBodyMassIndexTextStyle = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+);
+const KInterpretationTextStyle = TextStyle(
+  fontSize: 20,
+);
 // Colors
 const KBottomContainerHeight = 80.0;
 const KActiveCardColor = Color(0xFF1D1E33);

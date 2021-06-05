@@ -1,9 +1,11 @@
 import 'package:bim_calculator_2/screens/results_page.dart';
+import 'package:bim_calculator_2/widgets/bottom_button.dart';
 import 'package:bim_calculator_2/widgets/reusable_card.dart';
 import 'package:bim_calculator_2/widgets/reusable_icon.dart';
 import 'package:bim_calculator_2/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bim_calculator_2/calculator.dart';
 
 import '../constants.dart';
 
@@ -217,26 +219,21 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            text: 'CALCULATE',
             onTap: () {
+              Calculator calc = Calculator(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(),
+                  builder: (context) => ResultsPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                    interpretationText: calc.getInterpretation(),
+                  ),
                 ),
               );
             },
-            child: Container(
-              padding: EdgeInsets.only(bottom: 20),
-              child: Center(
-                child: Text(
-                  'Calculate',
-                  style: KLargeButtonTextStyle,
-                ),
-              ),
-              height: KBottomContainerHeight,
-              color: KBottomContainerColor,
-            ),
           ),
         ],
       ),
